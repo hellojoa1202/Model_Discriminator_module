@@ -34,7 +34,7 @@ class BaseModel(nn.Module):
         x = torch.relu(self.fc1(x))
         return self.fc2(x)
 
-# model_cw 정
+# model_cw 정의
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model_cw = BaseModel().to(device)
 model_cw.load_state_dict(torch.load('base_model.pth'))
