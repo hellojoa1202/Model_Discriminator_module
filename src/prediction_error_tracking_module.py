@@ -37,11 +37,11 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model_aprime = BaseModel().to(device)
 
 #base_model 파라미터 복사
-model_aprime.load_state_dict(torch.load('base_model.pth'))
+model_aprime.load_state_dict(torch.load('base_model.pth', map_location=device))
 
 #오답 샘플 Dt_mis 불러오기
-Dt_mis_inputs = torch.load("Dt_mis_inputs.pt")
-Dt_mis_labels = torch.load("Dt_mis_labels.pt")
+Dt_mis_inputs = torch.load("Dt_mis_inputs.pt", map_location=device)
+Dt_mis_labels = torch.load("Dt_mis_labels.pt", map_location=device)
 
 #오답 샘플 데이터셋 구성
 Dt_mis_dataset = TensorDataset(Dt_mis_inputs, Dt_mis_labels)
